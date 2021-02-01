@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <title>Live Ciphers</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+    <script type='text/javascript' src='lib/jquery-3.6.0.min.js'></script>
+    <script type='text/javascript' src='lib/js-crypto-4.0.0.js'></script>
+    <script src='live-ciphers.js'></script>
+    <link rel='stylesheet' href='style/lib/bootstrap-4.6.0.min.css'>
+    <link rel='stylesheet' href='style/style.css'>
+  </head>
+  <body>
+    <div class='container-fluid'>
+      <div class='row w-100 mb-4'>
+      <div class='col-12 col-md-10 col-lg-8 panel rounded shadow'>
+      <div class='row border-bottom border-dark pt-3 pb-2'>
+        
+        <div class='col-5'>
+            <input class='form-check-input' type='checkbox' name='usePBKDF2' value='usePBKDF2' id='usePBKDF2' checked>
+            <label class='form-check-label' for='usePBKDF2'>
+              Use PBKDF2?
+            </label>
+        </div>
+        <div class='col-2'>
+            <input class='form-check-input' type='checkbox' name='showPassword' value='showPassword' id='showPassword' unchecked>
+            <label class='form-check-label' for='showPassword'>
+              Show Password?
+            </label>
+        </div>
+        <div class='col-5 float-right'>
+        <div class='row'>
+          <div class='col'>
+              <label class='form-select-label' for='cipher'>Cipher:&nbsp;</label>
+              <select name='cipherType' id='cipherType' class=''>
+                  <option value='aes'>AES</option>
+                  <option value='des'>DES</option>
+                  <option value='3des'>3DES</option>
+                  <option value='rabbit'>Rabbit</option>
+                  <option value='rc4'>RC4</option>
+                  <option value='rc4drop'>RC4Drop</option>
+              </select>
+          </div>
+        </div>
+        </div>
+      </div>
+      
+      <div id='pbkdf2Row' class='row align-center border-bottom border-dark mt-3 pt-2 pb-3' style=''>
+        <div class='col-12' >
+        <div class='row'>
+        
+          <div class='col-2 w-50' >
+            <label for='saltInput' class='form-control input inputLabels border-0 float-right'>Salt:</label>
+          </div>
+          <div class='col-5 px-0'>
+            <input id='saltInput' class='form-control input' type='text' placeholder='BASE64'>
+          </div>
+        
+          <div class='col-2 w-50'>
+            <label for='iterationsInput' class='form-control input border-0'>Iterations:</label>
+          </div>
+          <div class='col-2 pl-0'>
+            <input id='iterationsInput' class='form-control number' type='number' min='0' max='50000' placeholder='0-50000' value='1000'>
+          </div>
+        </div>
+        </div>
+        
+        <div class='col-12' >
+        <div class='row align-center mt-3'>
+          <div class='col-2 w-50'>
+            <label for='pbkdf2Output' class='form-control input inputLabels border-0 float-right'>Key:</label>
+          </div>
+          <div id='' class='col-10 pl-0'>
+            <input id='pbkdf2Output' class='form-control input' type='text' placeholder='BASE64' readonly>
+          </div> 
+        </div> 
+        </div>
+      </div>
+      
+      <div id='enc_row'>
+        <div class='row mt-3'>
+          <div class='col labels'>
+            <div class='form-group'>
+              <label>Password:</label>
+              <input type='password' class='form-control input' id='passwordInput' placeholder='Enter the encryption/decryption password here...'>
+            </div>
+          </div>
+        </div>
+        
+        <div id='plaintext_row'>
+          <div class='row'>
+            <div class='col labels'>
+              <div class='form-group'>
+                <label>Plaintext:</label>
+                <textarea type='text' class='form-control input textarea' id='plaintextInput' placeholder='Enter the plaintext to be encrypted here...'></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id='ciphertext_row'>
+          <div class='row'>
+            <div class='col labels'>
+              <div class='form-group'>
+                <label>Ciphertext:</label>
+                <textarea type='text' class='form-control input textarea' id='ciphertextInput' placeholder='Enter the ciphertext to be decrypted here...'></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div></div>
+      
+      <div class='row w-100 mt-2'>
+      <div class='col-12 col-md-10 col-lg-8 panel rounded shadow'>
+        <div class='ciphertext_row labels'>
+          Random Number Generator:
+        </div>
+        <div class='row text-justify'>
+          <div class='col input prng text-monospace' id='prng'>
+            
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </body>
+</html>
